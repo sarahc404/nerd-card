@@ -93,6 +93,7 @@
   .bar{height:6px;background:rgba(255,255,255,.08);border-radius:4px;overflow:hidden}
   .bar i{display:block;height:100%;width:0;border-radius:4px;background:linear-gradient(90deg,var(--green),var(--cyan));
     box-shadow:0 0 8px var(--green);transition:width 1.2s cubic-bezier(.2,.9,.3,1)}
+  .bar.grass i{background:linear-gradient(90deg,#ff7a1a,#ffb347);box-shadow:0 0 8px #ff8c1a}
   .bar.low i{background:linear-gradient(90deg,var(--pink),#ff7a7a);box-shadow:0 0 8px var(--pink)}
   .ability{margin-top:12px;padding:10px;border-radius:10px;font-size:11px;line-height:1.5;overflow-wrap:break-word;
     background:rgba(255,61,242,.08);border:1px dashed rgba(255,61,242,.5)}
@@ -274,7 +275,7 @@ yes.addEventListener('click',()=>{
   reveal.classList.add('on');
   document.getElementById('serial').textContent='NC-'+Math.random().toString(16).slice(2,8).toUpperCase();
   const s=document.getElementById('stats');
-  s.innerHTML=stats.map(([n,v])=>`<div class="stat"><div class="l"><span>${n}</span><span>${v}</span></div><div class="bar${v<30?' low':''}"><i data-v="${v}"></i></div></div>`).join('');
+  s.innerHTML=stats.map(([n,v])=>`<div class="stat"><div class="l"><span>${n}</span><span>${v}</span></div><div class="bar${n==='Touching grass'?' grass':v<30?' low':''}"><i data-v="${v}"></i></div></div>`).join('');
   setTimeout(()=>s.querySelectorAll('i').forEach(i=>i.style.width=i.dataset.v+'%'),700);
   document.getElementById('after').innerHTML = dodges
     ? `It took you <b>${dodges} attempt${dodges>1?'s':''}</b> to finally say yes.`
