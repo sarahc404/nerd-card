@@ -88,7 +88,7 @@
   .cls{font-size:12px;color:var(--cyan);margin-top:2px;letter-spacing:.1em}
   .stats{margin-top:12px;display:grid;gap:7px}
   .stat .l span:first-child{min-width:0;overflow-wrap:break-word;padding-right:8px}
-  .stat{font-size:11px}
+  .stat{font-size:clamp(10px,2.8vw,11px)}
   .stat .l{display:flex;justify-content:space-between;margin-bottom:3px;color:var(--text)}
   .bar{height:6px;background:rgba(255,255,255,.08);border-radius:4px;overflow:hidden}
   .bar i{display:block;height:100%;width:0;border-radius:4px;background:linear-gradient(90deg,var(--green),var(--cyan));
@@ -283,7 +283,7 @@ addEventListener('pointermove',e=>{
 
 /* ---------- YES! ---------- */
 const stage=document.getElementById('stage'),reveal=document.getElementById('reveal'),card=document.getElementById('card');
-const stats=[['Lifelong dream of studying pure maths. For fun.',100],['Eye-roll-worthy puns',99],['Mad spreadsheets',97],['Gets excited about puzzles',97],['Has a list of lists',92],['Can knit',89],['Touching grass',64]];
+const stats=[['Lifelong dream of studying maths. For fun.',100],['Eye-roll-worthy puns',99],['Mad spreadsheets',97],['Gets excited about puzzles',97],['Has a list of lists',92],['Can knit',89],['Touching grass',64]];
 yes.addEventListener('click',()=>{
   stage.style.display='none';no.style.display='none';
   reveal.classList.add('on');
