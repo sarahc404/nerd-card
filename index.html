@@ -288,7 +288,7 @@ yes.addEventListener('click',()=>{
   s.innerHTML=stats.map(([n,v])=>`<div class="stat"><div class="l"><span>${n}</span><span>${v}</span></div><div class="bar${n==='Touching grass'?' grass':v<30?' low':''}"><i data-v="${v}"></i></div></div>`).join('');
   setTimeout(()=>s.querySelectorAll('i').forEach(i=>i.style.width=i.dataset.v+'%'),700);
   document.getElementById('after').innerHTML = dodges
-    ? `It took you <b>${dodges} attempt${dodges>1?'s':''}</b> to finally say yes.`+(dodges>5?`<br><b style="font-size:18px">Good Lordt.</b>`:'')
+    ? `It took you <b>${dodges} attempt${dodges>1?'s':''}</b> to finally say yes.`+(dodges>5?`<br>Good Lordt.`:'')
     : `Straight to YES. <b>Correct answer.</b>`;
   boom();
 });
