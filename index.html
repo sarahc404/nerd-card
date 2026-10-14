@@ -285,13 +285,14 @@ addEventListener('pointermove',e=>{
 
 /* ---------- YES! ---------- */
 const stage=document.getElementById('stage'),reveal=document.getElementById('reveal'),card=document.getElementById('card');
-const stats=[['Lifelong dream of studying maths. For fun.',100],['Eye-roll-worthy puns',99],['Mad spreadsheets',97],['Gets excited about puzzles',97],['Has a list of lists',92],['Can knit',89],['Touching grass',64]];
+const stats=[['Lifelong dream of studying maths. For fun.',100],['Eye-roll-worthy puns',99],['Mad spreadsheets',97],['Lego collection',90],['Can knit',89],['Puzzle excitement',88],['Touching grass',64]];
 yes.addEventListener('click',()=>{
   stage.style.display='none';no.style.display='none';
   reveal.classList.add('on');
   document.getElementById('serial').textContent='NC-'+Math.random().toString(16).slice(2,8).toUpperCase();
   const s=document.getElementById('stats');
-  s.innerHTML=stats.map(([n,v])=>`<div class="stat"><div class="l"><span>${n}</span><span>${v}</span></div><div class="bar${n==='Touching grass'?' grass':v<30?' low':''}"><i data-v="${v}"></i></div></div>`).join('');
+  const order=stats.slice();for(let i=order.length-1;i>0;i--){const j=Math.random()*(i+1)|0;[order[i],order[j]]=[order[j],order[i]];}
+  s.innerHTML=order.map(([n,v])=>`<div class="stat"><div class="l"><span>${n}</span><span>${v}</span></div><div class="bar${n==='Touching grass'?' grass':v<30?' low':''}"><i data-v="${v}"></i></div></div>`).join('');
   setTimeout(()=>s.querySelectorAll('i').forEach(i=>i.style.width=i.dataset.v+'%'),700);
   document.getElementById('after').innerHTML = dodges
     ? `It took you <b>${dodges} attempt${dodges>1?'s':''}</b> to finally say yes.`+(dodges>5?`<br>Good Lordt.`:'')
