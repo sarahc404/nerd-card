@@ -143,10 +143,7 @@
           <!-- ears -->
           <ellipse cx="24.5" cy="49" rx="4" ry="6.5" fill="#e9b195"/>
           <ellipse cx="75.5" cy="49" rx="4" ry="6.5" fill="#e9b195"/>
-          <circle cx="76.5" cy="44.5" r=".9" fill="#c9ccd1"/>
-          <g fill="none" stroke="#d4d7dc" stroke-width=".9">
-            <circle cx="76" cy="55.5" r="2"/><circle cx="77.8" cy="56.3" r="2"/><circle cx="79.6" cy="56.8" r="2"/>
-          </g>
+          
           <!-- head (big caricature dome, small chin) -->
           <path d="M50 13C69 13 76.5 27 76.5 44C76.5 59 67 75 50 76.5C33 75 23.5 59 23.5 44C23.5 27 31 13 50 13Z" fill="url(#skinG)"/>
           <!-- hair: sleek, swept to the side, tucked behind ears -->
@@ -156,6 +153,19 @@
           <path d="M70 28C75 34 77 42 77.5 50L79.5 48C80 40 77 31 70 28Z" fill="#2a1c15"/>
           <g fill="none" stroke="#2a1c15" stroke-width=".7" stroke-linecap="round">
             <path d="M44 10C42 5 45 2 47 1"/><path d="M52 9C54 4 58 3 60 4"/><path d="M38 12C34 8 33 5 34 3"/><path d="M60 10C64 6 68 7 69 8"/>
+          </g>
+          <!-- earlobes + earrings (both sides) -->
+          <g>
+            <ellipse cx="75.5" cy="52.5" rx="3.3" ry="4" fill="#e9b195"/>
+            <circle cx="77.2" cy="46.5" r=".85" fill="#d4d7dc"/>
+            <g fill="none" stroke="#d4d7dc" stroke-width=".8">
+              <circle cx="78.3" cy="53.6" r="1.5"/><circle cx="77.6" cy="55.9" r="1.5"/><circle cx="76.3" cy="57.6" r="1.5"/>
+            </g>
+            <ellipse cx="24.5" cy="52.5" rx="3.3" ry="4" fill="#e9b195"/>
+            <circle cx="22.8" cy="46.5" r=".85" fill="#d4d7dc"/>
+            <g fill="none" stroke="#d4d7dc" stroke-width=".8">
+              <circle cx="21.7" cy="53.6" r="1.5"/><circle cx="22.4" cy="55.9" r="1.5"/><circle cx="23.7" cy="57.6" r="1.5"/>
+            </g>
           </g>
           <!-- brows -->
           <path d="M30.5 38.5Q37 34 44.5 37.5" stroke="#2a1c15" stroke-width="2.4" fill="none" stroke-linecap="round"/>
@@ -278,7 +288,7 @@ yes.addEventListener('click',()=>{
   s.innerHTML=stats.map(([n,v])=>`<div class="stat"><div class="l"><span>${n}</span><span>${v}</span></div><div class="bar${n==='Touching grass'?' grass':v<30?' low':''}"><i data-v="${v}"></i></div></div>`).join('');
   setTimeout(()=>s.querySelectorAll('i').forEach(i=>i.style.width=i.dataset.v+'%'),700);
   document.getElementById('after').innerHTML = dodges
-    ? `It took you <b>${dodges} attempt${dodges>1?'s':''}</b> to finally say yes.`
+    ? `It took you <b>${dodges} attempt${dodges>1?'s':''}</b> to finally say yes.`+(dodges>5?`<br><b style="font-size:18px">Good Lordt.</b>`:'')
     : `Straight to YES. <b>Correct answer.</b>`;
   boom();
 });
